@@ -9,7 +9,7 @@ export const Todo = (props) => {
             <p>Description: {props.description}</p>
             <p>Exp. date: {props.date}</p>
             <p>Status: {props.status}</p>
-            <button onClick={() => props.updateStatus(props.id, "Complete")}> Make complete </button>
+            <button onClick={() => props.updateStatus(props.id, "Complete")}> {props.buttonText} </button>
         </div>
     )
 }
