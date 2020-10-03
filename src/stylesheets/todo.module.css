@@ -1,7 +1,33 @@
 .wrapper {
-    height: 300px;
-    width: 700px;
-    margin-bottom: 20px;
+    width: 300px;
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border: 2px solid black;
-    background: antiquewhite;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.wrapper[status="Todo"] {
+    background: #282c34;
+    color: white;
+}
+
+.wrapper[status="In Progress"] {
+    background: aqua;
+    color: black;
+}
+
+.wrapper[status="Complete"] {
+    background: green;
+    color: black;
+}
+
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
 }

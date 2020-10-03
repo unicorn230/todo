@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import {TodoManager} from "./containers/TodoManager";
+import {TodoContainer} from "./containers/TodoContainer";
 
-function App() {
-  return (
-    <TodoManager/>
-  );
+const App = () => {
+    return (
+        <div>
+            <TodoContainer/>
+        </div>
+    )
 }
 
 export default App;
