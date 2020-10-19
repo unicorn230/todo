@@ -4,14 +4,20 @@ const cors = require('cors')
 const app = express()
 const http = require('http');
 
+const login = "root";
+const password = "123456"
+
+const validation = (data) => (data.login === login && `${data.password}` === password);
+
 http.Server(app).listen(3001);
 
 app.use(cors())
 app.use(bodyParser.json())
 
 
-app.get('/getTodoList', (req, res) => {
-    res.send()
+app.post('/login', (req, res) => {
+    console.log(req.body)
+    res.end(JSON.stringify({isUserLogin: validation(req.body)}))
 })
 
 

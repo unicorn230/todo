@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './App.css';
 import {Redirect, Route, Switch} from "react-router";
 import {TodoCreator} from "./containers/TodoCreator";
 import {Link} from "react-router-dom";
 import {Todo} from "./components/Todo";
 import {TodoListComponent} from "./components/TodoListComponent";
+import Login from "./containers/Login";
 
 export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            userState: {
+                isUserLogin: false,
+            },
             todoData: [
                 {
                     id: 0,
@@ -21,6 +25,7 @@ export class App extends React.Component {
                 },
             ]
         }
+        this.updateUserState.bind(this)
         this.updateStatus.bind(this)
         this.addNewTodo.bind(this)
     }
@@ -28,7 +33,15 @@ export class App extends React.Component {
     addNewTodo = (newTodo) => {
         this.setState({
             todoData: [...this.state.todoData, newTodo]
-        },() => console.log(this.state.todoData))
+        }, () => console.log(this.state.todoData))
+    }
+
+    updateUserState = (newState) => {
+        this.setState({
+            userState: newState
+        }, () => {
+            console.log(this.state.userState.isUserLogin)
+        })
     }
 
     updateStatus = (id, newStatus) => {
@@ -46,16 +59,26 @@ export class App extends React.Component {
     render() {
         return (
             <Switch>
-                <Route exact path={'/todoList'}>
-                    <TodoListComponent todoList={this.mapTodoData()}/>
-                </Route>
-                <Route exact path={'/addNewTodo'}>
-                    <TodoCreator addNewTodo={this.addNewTodo}/>
-                </Route>
+                {!this.state.userState.isUserLogin ? (
+                    <Route exact path={'/login'}>
+                        <Login updateUserState={this.updateUserState}/>
+                    </Route>
+                ): <Route path={'/login'} component={() => Redirect('/todoList')}/> }
                 <Route exact path={'/'}>
-                    <Link to={'/todoList'}>Todo List</Link>
+                    <Link to={'/login'}>Войти</Link>
                     <Link to={'/addNewTodo'}>Create TODO</Link>
+                    <Link to={'/todoList'}>Todo List</Link>
                 </Route>
+                {this.state.userState.isUserLogin ? (
+                    <Fragment>
+                        <Route exact path={'/todoList'}>
+                            <TodoListComponent todoList={this.mapTodoData()}/>
+                        </Route>
+                        <Route exact path={'/addNewTodo'}>
+                            <TodoCreator addNewTodo={this.addNewTodo}/>
+                        </Route>
+                    </Fragment>
+                ) : null}
                 <Route path={'/'} component={() => Redirect('/')}/>
             </Switch>
         )

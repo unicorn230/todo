@@ -1,0 +1,27 @@
+.wrapper {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #282c34;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filedSet {
+    border: none;
+}
+
+.filedSet label {
+    display: inline-block;
+    width: 100px;
+}
+
+.accept {
+    margin-top: 20px;
+    padding: 5px 10px;
+}
