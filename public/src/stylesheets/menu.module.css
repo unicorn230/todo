@@ -1,0 +1,49 @@
+.wrapper {
+  background: white;
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  transition: 0.5s left;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  box-shadow: 6px 0px 19px -9px rgba(0, 0, 0, 0.75);
+}
+.wrapper a {
+  font-size: 1.2em;
+  position: relative;
+  display: block;
+  margin-right: auto;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  color: black;
+  text-decoration: none;
+  outline: none;
+  transition: 0.3s all;
+}
+.wrapper a:after {
+  transition: 0.3s all;
+  bottom: -5px;
+  left: 0;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  background: black;
+}
+.wrapper a:hover:after {
+  width: 100%;
+}
+.wrapper a:hover {
+  transform: scale(1.1);
+}
+
+.wrapper[state=false] {
+  left: -300px;
+}
+
+.wrapper[state=true] {
+  left: 0;
+}
+
+/*# sourceMappingURL=menu.module.css.map */

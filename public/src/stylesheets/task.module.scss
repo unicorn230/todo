@@ -1,0 +1,67 @@
+.inline_task_wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .task_title {
+    position: relative;
+    padding-left: 50px;
+    &:before {
+      position: absolute;
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .task_title[status='0'] {
+    &:before {
+      background: red;
+      border: 2px solid white;
+    }
+  }
+
+  .task_title[status='1'] {
+    &:before {
+      background: green;
+      border: 2px solid white;
+    }
+  }
+
+  .task_title[status='2'] {
+    &:before {
+      background: lightskyblue;
+      border: 2px solid white;
+    }
+  }
+
+  .task_title[status='3'] {
+    &:before {
+      background: #f700ff;
+      border: 2px solid white;
+    }
+  }
+}
+
+.task_wrapper {
+  padding: 20px;
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  background: white;
+  border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  p {
+    margin-bottom: 20px;
+  }
+}
