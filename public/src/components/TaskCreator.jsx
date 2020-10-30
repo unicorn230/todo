@@ -18,11 +18,11 @@ export default (props) => {
             props.updateModalState(false)
         }} className={s.task_creator_wrapper}>
             <label htmlFor={'title'}>Название:</label>
-            <input required name={'title'} value={title} onChange={e => updateTitle(e.target.value)} type={'text'}/>
+            <input required name={'title'} onChange={e => updateTitle(e.target.value)} type={'text'}/>
             <label htmlFor={'desc'}>Описание:</label>
-            <input required name={'desc'} value={description} onChange={e => updateDesc(e.target.value)} type={'text'}/>
+            <input required name={'desc'}  onChange={e => updateDesc(e.target.value)} type={'text'}/>
             <label htmlFor={'date'}>Дедлайн:</label>
-            <input required name={'date'} value={date} onChange={e => updateDate(e.target.value)} type={'date'}/>
+            <input required name={'date'}  onChange={e => updateDate(e.target.value)} type={'date'}/>
             <button type={'submit'}>
                 Создать!
             </button>

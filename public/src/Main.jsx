@@ -6,7 +6,7 @@ import Menu from "./components/MenuComponent";
 import Header from "./components/Header";
 import CreateButton from "./components/CreateButton";
 
-export class Main extends React.Component{
+export default class Main extends React.Component{
     constructor(props) {
         super(props);
         this.state = {

@@ -6,7 +6,7 @@ import TaskTile from "./TaskTile";
 export default (props) => {
 
     return (
-        <div blockStatus={props.blockStatus} onClick={() => {
+        <div blockstatus={props.blockStatus} onClick={() => {
             props.modalHandlers.updateModalContent(() => <TaskTile {...props}/>)
             props.modalHandlers.updateModalState(true)
         }} className={s.inline_task_wrapper}>

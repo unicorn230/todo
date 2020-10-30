@@ -16,7 +16,7 @@ export default (props) => (
 const style = {
     transition: "0.3s all",
     textAlign: "center",
-    lineHeight: "60px",
+    lineHeight: "50px",
     verticalAlign: "middle",
     cursor: "pointer",
     position: "fixed",
