@@ -17,15 +17,15 @@ export default (props) => {
             })
             props.updateModalState(false)
         }} className={s.task_creator_wrapper}>
-            <label htmlFor={'title'}>Название:</label>
-            <input required name={'title'} onChange={e => updateTitle(e.target.value)} type={'text'}/>
-            <label htmlFor={'desc'}>Описание:</label>
-            <input required name={'desc'}  onChange={e => updateDesc(e.target.value)} type={'text'}/>
-            <label htmlFor={'date'}>Дедлайн:</label>
-            <input required name={'date'}  onChange={e => updateDate(e.target.value)} type={'date'}/>
-            <button type={'submit'}>
-                Создать!
-            </button>
+            <input placeholder={"название"} required name={'title'} onChange={e => updateTitle(e.target.value)} type={'text'}/>
+            <input placeholder={"описание"}  required name={'desc'}  onChange={e => updateDesc(e.target.value)} type={'text'}/>
+            <input placeholder={"дата"} required name={'date'}  onChange={e => updateDate(e.target.value)} type={'date'}/>
+            <div className={s.buttons}>
+                <button className={s.submit} type={'submit'}>
+                    apply
+                </button>
+                <button onClick={()=> {props.updateModalState(false)}} className={s.close_button}>close</button>
+            </div>
         </form>
     )
 }

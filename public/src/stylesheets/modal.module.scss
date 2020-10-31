@@ -17,19 +17,52 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 30px 30px 20px;
+  box-shadow: -3px 4px 15px -4px #000000;
 
   label {
     margin-bottom: 3px;
   }
 
   input {
+    border: none;
+    border-bottom: 2px solid black;
     box-sizing: border-box;
     width: 100%;
     margin-bottom: 20px;
     height: 30px;
     padding: 2px 5px;
-    border-radius: 5px;
+    outline: none;
+  }
+}
+
+.close_button{
+  border: none;
+  outline: none;
+  color: white;
+  padding: 5px;
+  background: #f44336;
+  &:active{
+    background: #dd3d31;
+  }
+}
+
+.buttons{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit{
+  border: none;
+  outline: none;
+  color: white;
+  padding: 5px;
+  margin-right: 10px;
+  background: #008CBA;
+  &:active{
+    background: #017da5;
   }
 }

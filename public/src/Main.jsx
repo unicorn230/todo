@@ -103,7 +103,7 @@ export default class Main extends React.Component{
         return (
             <Fragment>
                 <Menu state={`${this.state.menuState}`}/>
-                <Header handleMenuState={this.handleMenuState}/>
+                <Header menuState={this.state.menuState} handleMenuState={this.handleMenuState}/>
                 <CreateButton updateModalContent={this.updateModalContent} updateModalState={this.updateModalState} createNewTask={this.createNewTask}/>
                 <Switch>
                     <Route exact path={'/create'}>

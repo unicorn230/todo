@@ -7,7 +7,6 @@ export default (props) => {
         <section state={props.state} className={s.wrapper}>
             <Link to={'/'}>Главная</Link>
             <Link to={'/list'}>Все задачи!</Link>
-            <Link to={'/create'}>Создать задачу</Link>
             <Link to={'/signout'}>Выйти</Link>
         </section>
     )
