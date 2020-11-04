@@ -2,6 +2,7 @@ import React from "react";
 import TaskCreator from "./TaskCreator";
 
 export default (props) => (
+
     <span onClick={() => {
         props.updateModalContent(() => <TaskCreator updateModalState={props.updateModalState} createNewTask={props.createNewTask}/>)
         props.updateModalState(true);

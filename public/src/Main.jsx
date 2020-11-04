@@ -5,55 +5,13 @@ import Modal from "./components/Modal";
 import Menu from "./components/MenuComponent";
 import Header from "./components/Header";
 import CreateButton from "./components/CreateButton";
+import axios from 'axios'
 
 export default class Main extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            tasksList: [
-                {
-                    id: 0,
-                    title: "new title",
-                    description: "Some description",
-                    date: `2010-10-16`,
-                    status: 0 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-                {
-                    id: 1,
-                    title: "new title",
-                    description: "Some description",
-                    date: `2010-10-16`,
-                    status: 0 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-                {
-                    id: 2,
-                    title: "new title",
-                    description: "Some description",
-                    date: `2010-10-16`,
-                    status: 0 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-                {
-                    id: 3,
-                    title: "2020-10-31",
-                    description: "Some description",
-                    date: `2020-10-31`,
-                    status: 0 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-                {
-                    id: 4,
-                    title: "2020-10-31",
-                    description: "Some description",
-                    date: `2020-10-31`,
-                    status: 1 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-                {
-                    id: 5,
-                    title: "2020-10-31",
-                    description: "Some description",
-                    date: `2020-10-31`,
-                    status: 2 // 0 - на выполение, 1 - в процесе, 2 - сделали
-                },
-            ],
+            tasksList: [],
             isModalOpen: false,
             menuState: false,
             modalContent: () => null,
@@ -65,18 +23,30 @@ export default class Main extends React.Component{
         this.updateModalState.bind(this);
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:3001/TaskList')
+            .then( res => this.setState({
+                tasksList: res.data
+            }) )
+    }
+
     createNewTask = (task = {
         title: '',
         description: '',
         date: '',
     }) => {
-        this.setState({
-            tasksList: [...this.state.tasksList, {
-                id: this.state.tasksList.length,
-                status: 0,
-                ...task,
-            }]
-        }, () => console.log(this.state))
+        axios.post('http://localhost:3001/addTask', {...task, status: 0})
+            .then(res => {
+                if (res.data.isTaskAdded) {
+                    this.setState({
+                        tasksList: [...this.state.tasksList, {
+                            ...task,
+                            id: this.state.tasksList.length,
+                            status: 0
+                        }]
+                    })
+                }})
+            .catch(err => console.log(err))
     }
 
     updateModalState = (newModalState) => {
@@ -92,10 +62,9 @@ export default class Main extends React.Component{
     }
 
     handleMenuState = () => {
-        console.log('123')
         this.setState({
             menuState: !this.state.menuState
-        }, () => console.log(this.state))
+        })
     }
 
 

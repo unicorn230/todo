@@ -9,7 +9,11 @@
   z-index: 999998;
 
   button {
-    margin-left: 20px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    width: 300px;
+    box-sizing: border-box;
     background: none;
     border: none;
     cursor: pointer;
@@ -22,3 +26,5 @@
   width: 2em;
   height: 2em;
 }
+
+

@@ -9,7 +9,11 @@
   z-index: 999998;
 }
 .header_wrapper button {
-  margin-left: 20px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  width: 300px;
+  box-sizing: border-box;
   background: none;
   border: none;
   cursor: pointer;
