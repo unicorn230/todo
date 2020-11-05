@@ -3,22 +3,31 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const http = require('http');
+const TaskUtils = require('./TaskUtils')
 
-const login = "root";
-const password = "123456"
-
-const validation = (data) => (data.login === login && `${data.password}` === password);
-
-http.Server(app).listen(3001);
 
 app.use(cors())
 app.use(bodyParser.json())
 
+http.Server(app).listen(3001);
 
-app.post('/login', (req, res) => {
-    console.log(req.body)
-    res.end(JSON.stringify({isUserLogin: validation(req.body)}))
+app.get('/getTask', (req, res) => {
+    res.end(TaskUtils.getTaskData(`${req.query.id}.json`))
 })
+
+app.get('/getAllTasks', (req, res) => {
+    console.log(TaskUtils.getTasks())
+    console.log(TaskUtils.getTasks().map(file => TaskUtils.getTaskData(file)));
+
+    res.end(JSON.stringify(TaskUtils.getTasks().map(file => TaskUtils.getTaskData(file))))
+})
+
+app.post('/createTask', (req, res) => {
+    TaskUtils.createTask(JSON.stringify(req.body))
+    res.end('SUCCESS')
+})
+
+
 
 
 

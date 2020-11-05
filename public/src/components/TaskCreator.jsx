@@ -1,5 +1,7 @@
 import React from "react";
 
+import axios from 'axios'
+
 import s from '../stylesheets/modal.module.css'
 
 export default (props) => {
@@ -10,11 +12,16 @@ export default (props) => {
     return (
         <form onSubmit={e => {
             e.preventDefault();
-            props.createNewTask({
+
+            axios.post('http://localhost:3001/createTask', {
                 title,
                 description,
-                date
-            })
+                date,
+            }).then(res => {
+                console.log(res)
+                this.props.createNewTask();
+            }).catch(err => console.error(err))
+
             props.updateModalState(false)
         }} className={s.task_creator_wrapper}>
             <label htmlFor={'title'}>Название:</label>
