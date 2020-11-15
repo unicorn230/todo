@@ -19,6 +19,7 @@ module.exports = class {
     static getTasks = () => {
         return fs.readdirSync(tasksPath)
     }
+
 }
 
 

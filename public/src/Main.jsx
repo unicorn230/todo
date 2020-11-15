@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 import Menu from "./components/MenuComponent";
 import Header from "./components/Header";
 import CreateButton from "./components/CreateButton";
+import List from './containers/List'
 
 export class Main extends React.Component{
     constructor(props) {
@@ -55,7 +56,7 @@ export class Main extends React.Component{
                         Create
                     </Route>
                     <Route menuState={`${this.state.menuState}`} exact path={'/list'}>
-
+                        <List />
                     </Route>
                     <Route exact path={'/'}>
                         <MainPage menuState={`${this.state.menuState}`} modalHandlers={{

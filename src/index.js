@@ -16,10 +16,14 @@ app.get('/getTask', (req, res) => {
 })
 
 app.get('/getAllTasks', (req, res) => {
-    console.log(TaskUtils.getTasks())
-    console.log(TaskUtils.getTasks().map(file => TaskUtils.getTaskData(file)));
+
 
     res.end(JSON.stringify(TaskUtils.getTasks().map(file => TaskUtils.getTaskData(file))))
+})
+
+app.get('/getSomeTasks', (req, res)=>{
+    let data = TaskUtils.getTasks().map(file => TaskUtils.getTaskData(file))
+    res.end(JSON.stringify(data.slice(req.query.got, req.query.get)))
 })
 
 app.post('/createTask', (req, res) => {
